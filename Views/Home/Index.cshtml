@@ -1,0 +1,25 @@
+﻿@model ImageCRUD.Models.HomeVM
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <a class="btn btn-outline-secondary" asp-action="Index" >All</a>
+    @foreach (var obj in Model.categories)
+    {
+        @*<form action="filter">
+            <input class="btn btn-outline-secondary" type="submit" asp-action="filter" asp-route-category="@obj.category_name" value="@obj.category_name"/>
+        </form>*@
+        <a class="btn btn-outline-secondary" asp-action="filter" asp-route-category="@obj.category_name">@obj.category_name</a>
+        @*<button class="btn btn-outline-secondary filter-button" asp-route-category="@obj.category_name" data-filter="@obj.category_name.Replace(' ','_')">@obj.category_name</button>*@
+    }
+
+<br /> <br />
+       <div class="container text-center">
+           <div class="row ">
+               <br />
+               @foreach (var obj in Model.products)
+               {
+                   <partial name="_IndividualProductCard" model="@obj" />
+               }
+           </div>
+       </div>
+</div>
